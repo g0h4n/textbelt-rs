@@ -7,7 +7,7 @@
 
 ### Summary
 
-First version with `send_sms(&phone, &message)` function.
+First version with `text(&phone, &message)` function to send a SMS.
 
 ## v0.0.1
 
