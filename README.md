@@ -72,7 +72,7 @@ async fn main() {
 ```
 
 
-> How to check the delivery status?
+> How to check the api key quota?
 
 ```rust
 use textbelt::TextbeltClient;

@@ -49,7 +49,7 @@ pub mod text;
 /// ```
 pub mod status;
 
-/// # How to check the delivery status?
+/// # How to check the api key quota?
 ///  
 /// ```rust
 /// let tc = TextbeltClient::new("Your textbelt API Key");
