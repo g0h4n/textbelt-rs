@@ -1,0 +1,12 @@
+[package]
+name = "test-textbelt-client"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1.8", features = ["macros", "fs", "rt-multi-thread", "process", "rt"] }
+serde_json = "1.0"
+# textbelt = { path = "../textbelt-rs" }
+# textbelt = { git = "https://github.com/g0h4n/textbelt-rs" }
+textbelt = "1.0.0"
+anyhow = "1.0"

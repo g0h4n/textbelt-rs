@@ -1,6 +1,6 @@
 [package]
 name = "textbelt"
-version = "0.0.1"
+version = "1.0.0"
 authors = ["noodle <https://github.com/branoodle>", "g0h4n <https://github.com/g0h4n>"]
 keywords = ["sms", "tokyo", "textbelt", "api"]
 description = "The library for Textbelt API, use to send SMS!"

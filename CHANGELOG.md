@@ -3,11 +3,11 @@
 ## v1.0.0
 
 ### Date
-`2025/09/FIXME`
+`2025/09/04`
 
 ### Summary
 
-First version with `text(&phone, &message)` function to send a SMS.
+First functional version.
 
 ## v0.0.1
 

@@ -19,13 +19,12 @@
 //! ```
 //! use textbelt::*;
 //!
-//! let tc = TextbeltClient::new("Your textbelt API Key");
+//! let tc = TextbeltClient::new("Your textbelt API Key", None);
 //! let phone = "+33601020304";
-//! let message = "Hello from textbelt-rs API!";
+//! let message = "Hello from textbelt-rs!";
 //! tc.text(&phone, &message).await?;
 //! ```
 //! 
-use serde::Deserialize;
 use serde_json::Value;
 
 /// # How to send an text SMS?
@@ -33,9 +32,9 @@ use serde_json::Value;
 /// ```
 /// use textbelt::*;
 /// 
-/// let tc = TextbeltClient::new("Your textbelt API Key");
+/// let tc = TextbeltClient::new("Your textbelt API Key", None);
 /// let phone = "+33601020304";
-/// let message = "Hello from textbelt-rs API!";
+/// let message = "Hello from textbelt-rs API!\nNoodle/g0h4n";
 /// tc.text(&phone, &message).await?;
 /// ```
 pub mod text;
@@ -43,7 +42,7 @@ pub mod text;
 /// # How to check the delivery status?
 /// 
 /// ```rust
-/// let tc = TextbeltClient::new("Your textbelt API Key");
+/// let tc = TextbeltClient::new("Your textbelt API Key", None);
 /// let text_id = "text_id";
 /// tc.status(&text_id).await?;
 /// ```
@@ -52,9 +51,8 @@ pub mod status;
 /// # How to check the api key quota?
 ///  
 /// ```rust
-/// let tc = TextbeltClient::new("Your textbelt API Key");
-/// let key = "key";
-/// tc.quota(&key).await?
+/// let tc = TextbeltClient::new("Your textbelt API Key", None);
+/// tc.quota().await?
 /// ```
 pub mod quota;
 
@@ -63,14 +61,25 @@ pub mod quota;
 #[derive(Copy, Clone)]
 pub struct TextbeltClient<'a> {
     /// Your API key for access to Textbelt services
+    /// <https://docs.textbelt.com/#get-an-api-key>
     api_key: &'a str,
+    /// Your API sender name
+    /// <https://docs.textbelt.com/compliance#sender-identification>
+    sender: &'a str,
+    /// Official API URL
+    /// <https://textbelt.com/>
     endpoint: &'a str,
 }
 impl<'a> TextbeltClient<'a> {
-    pub fn new(api_key: &'a str) -> Self {
-        TextbeltClient {
+    pub fn new(api_key: &'a str, sender_to_use: Option<&'a str>) -> Self {
+        let mut sender = "Noodle/g0h4n";
+        if let Some(s) = sender_to_use {
+            sender = s;
+        }
+        Self {
             api_key,
-            endpoint: "https://textbelt.com/",
+            sender,
+            endpoint: "https://textbelt.com",
         }
     }
 }

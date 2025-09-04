@@ -1,8 +1,8 @@
 <p align="center">
     <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="./img/textbelt-rs-transparent-dark-theme.png">
-        <source media="(prefers-color-scheme: light)" srcset="./img/textbelt-rs-transparent-light-theme.png">
-        <img src="./img/textbelt-rs-transparent-dark-theme.png" alt="textbelt-rs logo" width='250' />
+        <source media="(prefers-color-scheme: dark)" srcset="img/textbelt-rs-transparent-dark-theme.png">
+        <source media="(prefers-color-scheme: light)" srcset="img/textbelt-rs-transparent-light-theme.png">
+        <img src="img/textbelt-rs-transparent-dark-theme.png" alt="textbelt-rs logo" width='400' />
     </picture>
 </p>
 
@@ -10,9 +10,10 @@
 
 `textbelt-rs` is a Rust library for [textbelt](https://textbelt.com/). :crab:
 
-Textbelt is an SMS API that is built for developers who just want to send and receive SMS. Sending an SMS is a simple thing. The goal is to provide an API that is correspondingly simple, without requiring account configuration, logins, or extra recurring billing. 
+Textbelt is an SMS API that is built for developers who just want to send and receive SMS. Sending an SMS is a simple thing. The goal is to provide an API that is correspondingly simple, without requiring account configuration, logins, or extra recurring billing. You shouldn’t send more than 1–2 SMS per second; this is the rate limit imposed by the [official service](https://docs.textbelt.com/faq/sending-and-receiving-messages?q=change+from+name#is-there-any-rate-limiting). Please read the [official documentation](https://docs.textbelt.com/) for more information.
 
 - [CHANGELOG.md](CHANGELOG.md) - A record of all significant version changes
+- [examples/](examples/) - Library usage example in real Rust project
 
 ## Implemented Features
 
@@ -43,10 +44,10 @@ use textbelt::TextbeltClient;
 async fn main() {
     let tc = TextbeltClient::new("Your textbelt API Key");
     let phone = "+33601020304";
-    let message = "Hello from textbelt-rs API!";
+    let message = "Hello from textbelt-rs!";
     match tc.text(&phone, &message).await {
         Ok(res) => {
-            println!("{:?}", &res.data);
+            println!("{:?}", &res);
          },
         Err(err) => { println!("[Error] {err}") }
     }   
@@ -64,13 +65,12 @@ async fn main() {
     let text_id = "text_id";
     match tc.status(&text_id).await {
         Ok(res) => {
-            println!("{:?}", &res.data);
+            println!("{:?}", &res);
          },
         Err(err) => { println!("[Error] {err}") }
     }   
 }
 ```
-
 
 > How to check the api key quota?
 
@@ -80,10 +80,9 @@ use textbelt::TextbeltClient;
 #[tokio::main]
 async fn main() {
     let tc = TextbeltClient::new("Your textbelt API Key");
-    let key = "key";
-    match tc.quota(&key).await {
+    match tc.quota().await {
         Ok(res) => {
-            println!("{:?}", &res.data);
+            println!("{:?}", &res);
          },
         Err(err) => { println!("[Error] {err}") }
     }
