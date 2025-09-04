@@ -42,7 +42,7 @@ use textbelt::TextbeltClient;
 
 #[tokio::main]
 async fn main() {
-    let tc = TextbeltClient::new("Your textbelt API Key");
+    let tc = TextbeltClient::new("Your textbelt API Key", None);
     let phone = "+33601020304";
     let message = "Hello from textbelt-rs!";
     match tc.text(&phone, &message).await {
@@ -61,7 +61,7 @@ use textbelt::TextbeltClient;
 
 #[tokio::main]
 async fn main() {
-    let tc = TextbeltClient::new("Your textbelt API Key");
+    let tc = TextbeltClient::new("Your textbelt API Key", None);
     let text_id = "text_id";
     match tc.status(&text_id).await {
         Ok(res) => {
@@ -79,7 +79,7 @@ use textbelt::TextbeltClient;
 
 #[tokio::main]
 async fn main() {
-    let tc = TextbeltClient::new("Your textbelt API Key");
+    let tc = TextbeltClient::new("Your textbelt API Key", None);
     match tc.quota().await {
         Ok(res) => {
             println!("{:?}", &res);
