@@ -64,6 +64,7 @@ pub mod quota;
 pub struct TextbeltClient<'a> {
     /// Your API key for access to Textbelt services
     api_key: &'a str,
+    endpoint: &'a str,
 }
 impl<'a> TextbeltClient<'a> {
     pub fn new(api_key: &'a str) -> Self {
