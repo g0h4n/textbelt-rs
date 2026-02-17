@@ -1,19 +1,11 @@
-# Changelog
+## 1.0.1 - 2026-02-17
 
-## v1.0.0
+Fixing `reqwest` and update to latest version with `rustls` feature.
 
-### Date
-`2025/09/04`
-
-### Summary
+## 1.0.0 - 2025-09-04
 
 First functional version.
 
-## v0.0.1
-
-### Date
-`2025/09/01`
-
-### Summary
+## 0.0.1 - 2025-09-01
 
 First commit.
